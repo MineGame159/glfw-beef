@@ -6,3 +6,5 @@
 2. Right-click on your workspace and select **Add from Installed** and choose glfw-beef.
 3. **Make** glfw-beef **as a dependency** of your project.
 4. Enjoy beautiful **GLFW**.
+
+This does not come with any graphics api. But you can check out my [opengl-beef](https://github.com/MineGame159/opengl-beef) library.
