@@ -18,5 +18,21 @@ LibPaths = ["$(ProjectDir)/dist/x86/glfw3dll.lib"]
 PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
 
 [Configs.Release.Win64]
+LibPaths = ["$(ProjectDir)/dist/x64/glfw3dll.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+
+[Configs.Paranoid.Win32]
 LibPaths = ["$(ProjectDir)/dist/x86/glfw3dll.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+
+[Configs.Paranoid.Win64]
+LibPaths = ["$(ProjectDir)/dist/x64/glfw3dll.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+
+[Configs.Test.Win32]
+LibPaths = ["$(ProjectDir)/dist/x86/glfw3dll.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+
+[Configs.Test.Win64]
+LibPaths = ["$(ProjectDir)/dist/x64/glfw3dll.lib"]
 PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
