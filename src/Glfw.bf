@@ -483,13 +483,13 @@ namespace glfw_beef {
 		}
 
 		[CLink]
-		private static extern RawFramebufferSizeCallback glfwSetFramebufferSizeCallback(RawFramebufferSizeCallback callback);
-		public static void SetFramebufferSizeCallback(FramebufferSizeCallback callback) {
+		private static extern RawFramebufferSizeCallback glfwSetFramebufferSizeCallback(GlfwWindow* window, RawFramebufferSizeCallback callback);
+		public static void SetFramebufferSizeCallback(GlfwWindow* window, FramebufferSizeCallback callback) {
 			if (framebufferSizeCallback != null) delete framebufferSizeCallback;
 			framebufferSizeCallback = callback;
 
-			if (callback != null) glfwSetFramebufferSizeCallback((window, width, height) => framebufferSizeCallback(window, width, height));
-			else glfwSetFramebufferSizeCallback((window, width, height) => {});
+			if (callback != null) glfwSetFramebufferSizeCallback(window, (window, width, height) => framebufferSizeCallback(window, width, height));
+			else glfwSetFramebufferSizeCallback(window, (window, width, height) => {});
 		}
 
 		[CLink]
