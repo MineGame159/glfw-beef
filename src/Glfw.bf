@@ -310,7 +310,7 @@ namespace glfw_beef {
 
 		[CLink]
 		private static extern void glfwGetFramebufferSize(GlfwWindow* window, int* width, int* height);
-		public static void GetFramebufferSIze(GlfwWindow* window, ref int width, ref int height) {
+		public static void GetFramebufferSize(GlfwWindow* window, ref int width, ref int height) {
 			glfwGetFramebufferSize(window, &width, &height);
 		}
 
