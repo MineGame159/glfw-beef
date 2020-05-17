@@ -993,7 +993,7 @@ namespace glfw_beef {
 
 		[CLink]
 		private static extern float* glfwGetJoystickAxes(int id, int* count);
-		public static float* getJoystickAxes(int id, ref int count) {
+		public static float* GetJoystickAxes(int id, ref int count) {
 			return glfwGetJoystickAxes(id, &count);
 		}
 
