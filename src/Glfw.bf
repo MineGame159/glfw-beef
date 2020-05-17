@@ -778,6 +778,9 @@ namespace glfw_beef {
 		public static void SetInputMode(GlfwWindow* window, GlfwInput.InputMode mode, int value) {
 			glfwSetInputMode(window, mode.Underlying, value);
 		}
+		public static void SetInputMode(GlfwWindow* window, GlfwInput.InputMode mode, GlfwInput.CursorInputMode value) {
+			glfwSetInputMode(window, mode.Underlying, value.Underlying);
+		}
 
 		[CLink]
 		private static extern int glfwRawMouseMotionSupported();
