@@ -140,6 +140,7 @@ namespace glfw_beef {
 			RightShift,
 			RightControl,
 			RightAlt,
+			RightSuper,
 			Menu,
 
 			Last = Menu
