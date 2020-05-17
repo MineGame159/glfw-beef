@@ -970,5 +970,12 @@ namespace glfw_beef {
 		public static uint64 GetTimeFrequency() {
 			return glfwGetTimerFrequency();
 		}
+
+		// Native access
+		[CLink]
+		private static extern Windows.HWnd glfwGetWin32Window(GlfwWindow* window);
+		public static Windows.HWnd GetWin32Window(GlfwWindow* window) {
+			return glfwGetWin32Window(window);
+		}
 	}
 }
