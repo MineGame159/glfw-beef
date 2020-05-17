@@ -186,12 +186,19 @@ namespace glfw_beef {
 
 		[CLink]
 		private static extern RawErrorCallback glfwSetErrorCallback(RawErrorCallback callback);
-		public static void SetErrorCallback(ErrorCallback callback) {
-			if (errorCallback != null) delete errorCallback;
-			errorCallback = callback;
+		public static ErrorCallback SetErrorCallback(ErrorCallback callback, bool deletePrevCallback = true) {
+			ErrorCallback prevCallback = errorCallback;
+
+			if (errorCallback != null && deletePrevCallback) delete errorCallback;
+			errorCallback = callback;					   
 
 			if (callback != null) glfwSetErrorCallback((error, description) => errorCallback((Error) error));
-	 		else glfwSetErrorCallback((error, description) => {});
+	 		else {
+				 glfwSetErrorCallback((error, description) => {});
+				 errorCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		// Window reference
@@ -414,92 +421,155 @@ namespace glfw_beef {
 
 		[CLink]
 		private static extern RawWindowPosCallback glfwSetWindowPosCallback(RawWindowPosCallback callback);
-		public static void SetWindowPosCallback(WindowPosCallback callback) {
-			if (windowPosCallback != null) delete windowPosCallback;
+		public static WindowPosCallback SetWindowPosCallback(WindowPosCallback callback, bool deletePrevCallback = true) {
+			WindowPosCallback prevCallback = windowPosCallback;
+
+			if (windowPosCallback != null && deletePrevCallback) delete windowPosCallback;
 			windowPosCallback = callback;
 
 			if (callback != null) glfwSetWindowPosCallback((window, x, y) => windowPosCallback(window, x, y));
-			else glfwSetWindowPosCallback((window, x, y) => {});
+			else {
+				glfwSetWindowPosCallback((window, x, y) => {});
+				windowPosCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawWindowSizeCallback glfwSetWindowSizeCallback(GlfwWindow* window, RawWindowSizeCallback callback);
-		public static void SetWindowSizeCallback(GlfwWindow* window, WindowSizeCallback calllback) {
-			if (windowSizeCallback != null) delete windowSizeCallback;
+		public static WindowSizeCallback SetWindowSizeCallback(GlfwWindow* window, WindowSizeCallback calllback, bool deletePrevCallback = true) {
+			WindowSizeCallback prevCallback = windowSizeCallback;
+
+			if (windowSizeCallback != null && deletePrevCallback) delete windowSizeCallback;
 			windowSizeCallback = calllback;
 
 			if (calllback != null) glfwSetWindowSizeCallback(window, (window, width, height) => windowSizeCallback(window, width, height));
-			else glfwSetWindowSizeCallback(window, (window, width, height) => {});
+			else {
+				glfwSetWindowSizeCallback(window, (window, width, height) => {});
+				windowSizeCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawWindowCloseCallback glfwSetWindowCloseCallback(RawWindowCloseCallback callback);
-		public static void SetWindowCloseCallback(WindowCloseCallback callback) {
-			if (windowCloseCallback != null) delete windowCloseCallback;
+		public static WindowCloseCallback SetWindowCloseCallback(WindowCloseCallback callback, bool deletePrevCallback = true) {
+			WindowCloseCallback prevCallback = windowCloseCallback;
+
+			if (windowCloseCallback != null && deletePrevCallback) delete windowCloseCallback;
 			windowCloseCallback = callback;
 
 			if (callback != null) glfwSetWindowCloseCallback((window) => windowCloseCallback(window));
-			else glfwSetWindowCloseCallback((window) => {});
+			else {
+				glfwSetWindowCloseCallback((window) => {});
+				windowCloseCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawWindowRefreshCallback glfwSetWindowRefreshCallback(RawWindowRefreshCallback callback);
-		public static void SetWindowRefreshCallback(WindowRefreshCallback callback) {
-			if (windowRefreshCallback != null) delete windowRefreshCallback;
+		public static WindowRefreshCallback SetWindowRefreshCallback(WindowRefreshCallback callback, bool deletePrevCallback = true) {
+			WindowRefreshCallback prevCallback = windowRefreshCallback;
+
+			if (windowRefreshCallback != null && deletePrevCallback) delete windowRefreshCallback;
 			windowRefreshCallback = callback;
 
 			if (callback != null) glfwSetWindowRefreshCallback((window) => windowRefreshCallback(window));
-			else glfwSetWindowRefreshCallback((window) => {});
+			else {
+				glfwSetWindowRefreshCallback((window) => {});
+				windowRefreshCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawWindowFocusCallback glfwSetWindowFocusCallback(RawWindowFocusCallback callback);
-		public static void SetWindowFocusCallback(WindowFocusCallback callback) {
-			if (windowFocusCallback != null) delete windowFocusCallback;
+		public static WindowFocusCallback SetWindowFocusCallback(WindowFocusCallback callback, bool deletePrevCallback = true) {
+			WindowFocusCallback prevCallback = windowFocusCallback;
+
+			if (windowFocusCallback != null && deletePrevCallback) delete windowFocusCallback;
 			windowFocusCallback = callback;
 
 			if (callback != null) glfwSetWindowFocusCallback((window, focus) => windowFocusCallback(window, focus == TRUE));
-			else glfwSetWindowFocusCallback((window, focus) => {});
+			else {
+				glfwSetWindowFocusCallback((window, focus) => {});
+				windowFocusCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawWindowIconifyCallback glfwSetWindowIconifyCallback(RawWindowIconifyCallback callback);
-		public static void SetWindowIconifyCallback(WindowIconifyCallback callback) {
-			if (windowIconifyCallback != null) delete windowIconifyCallback;
+		public static WindowIconifyCallback SetWindowIconifyCallback(WindowIconifyCallback callback, bool deletePrevCallback = true) {
+			WindowIconifyCallback prevCallback = windowIconifyCallback;
+
+			if (windowIconifyCallback != null && deletePrevCallback) delete windowIconifyCallback;
 			windowIconifyCallback = callback;
 
 			if (callback != null) glfwSetWindowIconifyCallback((window, iconify) => windowIconifyCallback(window, iconify == TRUE));
-			else glfwSetWindowIconifyCallback((window, iconify) => {});
+			else {
+				glfwSetWindowIconifyCallback((window, iconify) => {});
+				windowIconifyCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawWindowMaximizeCallback glfwSetWindowMaximizeCallback(RawWindowMaximizeCallback callback);
-		public static void SetWindowMaximizeCallback(WindowMaximizeCallback callback) {
-			if (windowMaximizeCallback != null) delete windowMaximizeCallback;
+		public static WindowMaximizeCallback SetWindowMaximizeCallback(WindowMaximizeCallback callback, bool deletePrevCallback = true) {
+			WindowMaximizeCallback prevCallback = windowMaximizeCallback;
+
+			if (windowMaximizeCallback != null && deletePrevCallback) delete windowMaximizeCallback;
 			windowMaximizeCallback = callback;
 
 			if (callback != null) glfwSetWindowMaximizeCallback((window, maximize) => windowMaximizeCallback(window, maximize == TRUE));
-			else glfwSetWindowMaximizeCallback((window, maximize) => {});
+			else {
+				glfwSetWindowMaximizeCallback((window, maximize) => {});
+				windowMaximizeCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawFramebufferSizeCallback glfwSetFramebufferSizeCallback(GlfwWindow* window, RawFramebufferSizeCallback callback);
-		public static void SetFramebufferSizeCallback(GlfwWindow* window, FramebufferSizeCallback callback) {
-			if (framebufferSizeCallback != null) delete framebufferSizeCallback;
+		public static FramebufferSizeCallback SetFramebufferSizeCallback(GlfwWindow* window, FramebufferSizeCallback callback, bool deletePrevCallback = true) {
+			FramebufferSizeCallback prevCallback = framebufferSizeCallback;
+
+			if (framebufferSizeCallback != null && deletePrevCallback) delete framebufferSizeCallback;
 			framebufferSizeCallback = callback;
 
 			if (callback != null) glfwSetFramebufferSizeCallback(window, (window, width, height) => framebufferSizeCallback(window, width, height));
-			else glfwSetFramebufferSizeCallback(window, (window, width, height) => {});
+			else {
+				glfwSetFramebufferSizeCallback(window, (window, width, height) => {});
+				framebufferSizeCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawWindowContentsScaleCallback glfwSetWindowContentScaleCallback(RawWindowContentsScaleCallback callback);
-		public static void SetWindowContentScaleCallback(WindowContentsScaleCallback callback) {
-			if (windowContentsScaleCallback != null) delete windowContentsScaleCallback;
+		public static WindowContentsScaleCallback SetWindowContentScaleCallback(WindowContentsScaleCallback callback, bool deletePrevCallback = true) {
+			WindowContentsScaleCallback prevCallback = windowContentsScaleCallback;
+
+			if (windowContentsScaleCallback != null && deletePrevCallback) delete windowContentsScaleCallback;
 			windowContentsScaleCallback = callback;
 
 			if (callback != null) glfwSetWindowContentScaleCallback((window, xScale, yScale) => windowContentsScaleCallback(window, xScale, yScale));
-			else glfwSetWindowContentScaleCallback((window, xScale, yScale) => {});
+			else {
+				glfwSetWindowContentScaleCallback((window, xScale, yScale) => {});
+				windowContentsScaleCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
@@ -656,12 +726,19 @@ namespace glfw_beef {
 
 		[CLink]
 		private static extern RawMonitorCallback glfwSetMonitorCallback(RawMonitorCallback callback);
-		public static void SetMonitorCallback(MonitorCallback callback) {
-			if (monitorCallback != null) delete monitorCallback;
+		public static MonitorCallback SetMonitorCallback(MonitorCallback callback, bool deletePrevCallback = true) {
+			MonitorCallback prevCallback = monitorCallback;
+
+			if (monitorCallback != null && deletePrevCallback) delete monitorCallback;
 			monitorCallback = callback;
 
 			if (callback != null) glfwSetMonitorCallback((monitor, event) => monitorCallback(monitor, (GlfwMonitor.Event) event));
-			else glfwSetMonitorCallback((monitor, event) => {});
+			else {
+				glfwSetMonitorCallback((monitor, event) => {});
+				monitorCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
@@ -771,82 +848,138 @@ namespace glfw_beef {
 
 		[CLink]
 		private static extern RawKeyCallback glfwSetKeyCallback(GlfwWindow* window, RawKeyCallback callback);
-		public static void SetKeyCallback(GlfwWindow* window, KeyCallback callback) {
-			if (keyCallback != null) delete keyCallback;
+		public static KeyCallback SetKeyCallback(GlfwWindow* window, KeyCallback callback, bool deletePrevCallback = true) {
+			KeyCallback prevCallback = keyCallback;
+
+			if (keyCallback != null && deletePrevCallback) delete keyCallback;
 			keyCallback = callback;
 
 			if (callback != null) glfwSetKeyCallback(window, (window, key, scancode, action, mods) => keyCallback(window, (GlfwInput.Key) key, scancode, (GlfwInput.Action) action, mods));
-			else glfwSetKeyCallback(window, (window, key, scancode, action, mods) => {});
+			else {
+				glfwSetKeyCallback(window, (window, key, scancode, action, mods) => {});
+				keyCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawCharCallback glfwSetCharCallback(GlfwWindow* window, RawCharCallback callback);
-		public static void SetCharCallback(GlfwWindow* window, CharCallback callback) {
-			if (charCallback != null) delete charCallback;
+		public static CharCallback SetCharCallback(GlfwWindow* window, CharCallback callback, bool deletePrevCallback = true) {
+			CharCallback prevCallback = charCallback;
+
+			if (charCallback != null && deletePrevCallback) delete charCallback;
 			charCallback = callback;
 
 			if (callback != null) glfwSetCharCallback(window, (window, char) => charCallback(window, char));
-			else glfwSetCharCallback(window, (window, char) => {});
+			else {
+				glfwSetCharCallback(window, (window, char) => {});
+				charCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawCharModsCallback glfwSetCharModsCallback(GlfwWindow* window, RawCharModsCallback callback);
-		public static void SetCharModsCallback(GlfwWindow* window, CharModsCallback callback) {
-			if (charModsCallback != null) delete charModsCallback;
+		public static CharModsCallback SetCharModsCallback(GlfwWindow* window, CharModsCallback callback, bool deletePrevCallback = true) {
+			CharModsCallback prevCallback = charModsCallback;
+
+			if (charModsCallback != null && deletePrevCallback) delete charModsCallback;
 			charModsCallback = callback;
 
 			if (callback != null) glfwSetCharModsCallback(window, (window, char, mods) => charModsCallback(window, char, mods));
-			else glfwSetCharModsCallback(window, (window, char, mods) => {});
+			else {
+				glfwSetCharModsCallback(window, (window, char, mods) => {});
+				charModsCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawMouseButtonCallback glfwSetMouseButtonCallback(GlfwWindow* window, RawMouseButtonCallback callback);
-		public static void SetMouseButtonCallback(GlfwWindow* window, MouseButtonCallback callback) {
-			if (mouseButtonCallback != null) delete mouseButtonCallback;
+		public static MouseButtonCallback SetMouseButtonCallback(GlfwWindow* window, MouseButtonCallback callback, bool deletePrevCallback = true) {
+			MouseButtonCallback prevCallback = mouseButtonCallback;
+
+			if (mouseButtonCallback != null && deletePrevCallback) delete mouseButtonCallback;
 			mouseButtonCallback = callback;
 
 			if (callback != null) glfwSetMouseButtonCallback(window, (window, button, action, mods) => mouseButtonCallback(window, (GlfwInput.MouseButton) button, (GlfwInput.Action) action, mods));
-			else glfwSetMouseButtonCallback(window, (window, button, action, mods) => {});
+			else {
+				glfwSetMouseButtonCallback(window, (window, button, action, mods) => {});
+				mouseButtonCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawCursorPosCallback glfwSetCursorPosCallback(GlfwWindow* window, RawCursorPosCallback callback);
-		public static void SetCursorPosCallback(GlfwWindow* window, CursorPosCallback callback) {
-			if (cursorPosCallback != null) delete cursorPosCallback;
+		public static CursorPosCallback SetCursorPosCallback(GlfwWindow* window, CursorPosCallback callback, bool deletePrevCallback = true) {
+			CursorPosCallback prevCallback = cursorPosCallback;
+
+			if (cursorPosCallback != null && deletePrevCallback) delete cursorPosCallback;
 			cursorPosCallback = callback;
 
 			if (callback != null) glfwSetCursorPosCallback(window, (window, x, y) => cursorPosCallback(window, x, y));
-			else glfwSetCursorPosCallback(window, (window, x, y) => {});
+			else {
+				glfwSetCursorPosCallback(window, (window, x, y) => {});
+				cursorPosCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawCursorEnterCallback glfwSetCursorEnterCallback(GlfwWindow* window, RawCursorEnterCallback callback);
-		public static void SetCursorEnterCallback(GlfwWindow* window, CursorEnterCallback callback) {
-			if (cursorEnterCallback != null) delete cursorEnterCallback;
+		public static CursorEnterCallback SetCursorEnterCallback(GlfwWindow* window, CursorEnterCallback callback, bool deletePrevCallback = true) {
+			CursorEnterCallback prevCallback = cursorEnterCallback;
+
+			if (cursorEnterCallback != null && deletePrevCallback) delete cursorEnterCallback;
 			cursorEnterCallback = callback;
 
 			if (callback != null) glfwSetCursorEnterCallback(window, (window, entered) => cursorEnterCallback(window, entered == TRUE));
-			else glfwSetCursorEnterCallback(window, (window, entered) => {});
+			else {
+				glfwSetCursorEnterCallback(window, (window, entered) => {});
+				cursorEnterCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawScrollCallback glfwSetScrollCallback(GlfwWindow* window, RawScrollCallback callback);
-		public static void SetScrollCallback(GlfwWindow* window, ScrollCallback callback) {
-			if (scrollCallback != null) delete scrollCallback;
+		public static ScrollCallback SetScrollCallback(GlfwWindow* window, ScrollCallback callback, bool deletePrevCallback = true) {
+			ScrollCallback prevCallback = scrollCallback;
+
+			if (scrollCallback != null && deletePrevCallback) delete scrollCallback;
 			scrollCallback = callback;
 
 			if (callback != null) glfwSetScrollCallback(window, (window, xOffset, yOffset) => scrollCallback(window, xOffset, yOffset));
-			else glfwSetScrollCallback(window, (window, xOffset, yOffset) => {});
+			else {
+				glfwSetScrollCallback(window, (window, xOffset, yOffset) => {});
+				scrollCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
 		private static extern RawDropCallback glfwSetDropCallback(GlfwWindow* window, RawDropCallback callback);
-		public static void SetDropCallback(GlfwWindow* window, DropCallback callback) {
-			if (dropCallback != null) delete dropCallback;
+		public static DropCallback SetDropCallback(GlfwWindow* window, DropCallback callback, bool deletePrevCallback = true) {
+			DropCallback prevCallback = dropCallback;
+
+			if (dropCallback != null && deletePrevCallback) delete dropCallback;
 			dropCallback = callback;
 
 			if (callback != null) glfwSetDropCallback(window, (window, count, paths) => dropCallback(window, count, paths));
-			else glfwSetDropCallback(window, (window, count, paths) => {});
+			else {
+				glfwSetDropCallback(window, (window, count, paths) => {});
+				dropCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
@@ -907,12 +1040,19 @@ namespace glfw_beef {
 
 		[CLink]
 		private static extern RawJoystickCallback glfwSetJoystickCallback(RawJoystickCallback callback);
-		public static void SetJoystickCallback(JoystickCallback callback) {
-			if (joystickCallback != null) delete joystickCallback;
+		public static JoystickCallback SetJoystickCallback(JoystickCallback callback, bool deletePrevCallback = true) {
+			JoystickCallback prevCallback = joystickCallback;
+
+			if (joystickCallback != null && deletePrevCallback) delete joystickCallback;
 			joystickCallback = callback;
 
 			if (callback != null) glfwSetJoystickCallback((id, event) => joystickCallback(id, (GlfwInput.JoystickEvent) event));
-			else glfwSetJoystickCallback((id, event) => {});
+			else {
+				glfwSetJoystickCallback((id, event) => {});
+				joystickCallback = null;
+			}
+
+			return prevCallback;
 		}
 
 		[CLink]
