@@ -177,7 +177,7 @@ namespace glfw_beef {
 		[CLink]
 		private static extern int glfwGetError(char8** description6);
 		public static Error GetError(String buffer) {
-			char8* chars = scope .;
+			char8* chars = scope .();
 			int err = glfwGetError(&chars);
 
 			if (chars != null) buffer.Append(chars);
