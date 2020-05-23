@@ -3,7 +3,7 @@ using System;
 namespace glfw_beef {
 	[CRepr]
 	class GlfwImage {
-		int width, height;
-		char8* pixels;
+		public int32 width, height;
+		public char8* pixels;
 	}
 }

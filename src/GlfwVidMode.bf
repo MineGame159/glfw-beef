@@ -3,8 +3,8 @@ using System;
 namespace glfw_beef {
 	[CRepr]
 	struct GlfwVidMode {
-		int width, height;
-		int redBits, greenBits, blueBits;
-		int refreshRate;
+		public int32 width, height;
+		public int32 redBits, greenBits, blueBits;
+		public int32 refreshRate;
 	}
 }
