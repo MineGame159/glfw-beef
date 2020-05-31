@@ -106,7 +106,7 @@ namespace glfw_beef {
 		public delegate void MonitorCallback(GlfwMonitor* monitor, GlfwMonitor.Event event);
 		private static MonitorCallback monitorCallback ~ delete _;
 
-		private function void RawKeyCallback(GlfwWindow* monitor, int key, int scancode, int action, int mods);
+		private function void RawKeyCallback(GlfwWindow* monitor, int32 key, int32 scancode, int32 action, int32 mods);
 		public delegate void KeyCallback(GlfwWindow* window, GlfwInput.Key key, int scancode, GlfwInput.Action action, int mods);
 		private static KeyCallback keyCallback ~ delete _;
 
