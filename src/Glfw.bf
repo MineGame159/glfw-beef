@@ -454,19 +454,19 @@ namespace glfw_beef {
 		}
 
 		[CLink]
-		private static extern RawWindowCloseCallback glfwSetWindowCloseCallback(RawWindowCloseCallback callback);
-		public static WindowCloseCallback SetWindowCloseCallback(WindowCloseCallback callback, bool deletePrevCallback = true) {
+		private static extern RawWindowCloseCallback glfwSetWindowCloseCallback(GlfwWindow* window, RawWindowCloseCallback callback);
+		public static WindowCloseCallback SetWindowCloseCallback(GlfwWindow* window, WindowCloseCallback callback, bool deletePrevCallback = true) {
 			WindowCloseCallback prevCallback = windowCloseCallback;
 
 			if (windowCloseCallback != null && deletePrevCallback) delete windowCloseCallback;
 			windowCloseCallback = callback;
 
-			if (callback != null) glfwSetWindowCloseCallback((window) => windowCloseCallback(window));
+			if (callback != null) glfwSetWindowCloseCallback(window, (window) => windowCloseCallback(window));
 			else {
-				glfwSetWindowCloseCallback((window) => {});
+				glfwSetWindowCloseCallback(window, (window) => {});
 				windowCloseCallback = null;
 			}
-
+			
 			return prevCallback;
 		}
 
