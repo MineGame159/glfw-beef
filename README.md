@@ -10,3 +10,15 @@
 4. Enjoy beautiful **GLFW**.
 
 This does not come with any graphics api. But you can check out my [opengl-beef](https://github.com/MineGame159/opengl-beef) library.
+
+## Linux usage
+
+To use this library on linux, install **libglfw3-dev** package and add **-lglfw** to link flags. For example, in your BeefProj.toml add
+
+```
+[Configs.Debug.Linux64]
+OtherLinkFlags = "$(LinkFlags) -lglfw"
+
+[Configs.Release.Linux64]
+OtherLinkFlags = "$(LinkFlags) -lglfw"
+```
