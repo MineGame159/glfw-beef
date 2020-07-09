@@ -1114,6 +1114,7 @@ namespace glfw_beef {
 			return glfwGetTimerFrequency();
 		}
 
+#if BF_PLATFORM_WINDOWS
 		// Native access
 		[CLink]
 		private static extern Windows.HWnd glfwGetWin32Window(GlfwWindow* window);
@@ -1121,4 +1122,5 @@ namespace glfw_beef {
 			return glfwGetWin32Window(window);
 		}
 	}
+#endif
 }
