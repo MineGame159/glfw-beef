@@ -1121,6 +1121,6 @@ namespace glfw_beef {
 		public static Windows.HWnd GetWin32Window(GlfwWindow* window) {
 			return glfwGetWin32Window(window);
 		}
-	}
 #endif
+	}
 }
