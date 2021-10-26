@@ -6,29 +6,29 @@ TargetType = "BeefLib"
 StartupObject = "GLFW.Program"
 
 [Configs.Debug.Win64]
-OtherLinkFlags = "$(LinkFlags) gdi32.lib shell32.lib"
-LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
-
-[Configs.Release.Win64]
-OtherLinkFlags = "$(LinkFlags) gdi32.lib shell32.lib"
-LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
-
-[Configs.Paranoid.Win64]
-OtherLinkFlags = "$(LinkFlags) gdi32.lib shell32.lib"
-LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
-
-[Configs.Test.Win64]
-OtherLinkFlags = "$(LinkFlags) gdi32.lib shell32.lib"
+OtherLinkFlags = "$(LinkFlags) gdi32.lib user32.lib kernel32.lib shell32.lib"
 LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
 
 [Configs.Debug.Linux64]
 OtherLinkFlags = "$(LinkFlags) -lglfw"
 
+[Configs.Release.Win64]
+OtherLinkFlags = "$(LinkFlags) gdi32.lib user32.lib kernel32.lib shell32.lib"
+LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
+
 [Configs.Release.Linux64]
 OtherLinkFlags = "$(LinkFlags) -lglfw"
 
+[Configs.Paranoid.Win64]
+OtherLinkFlags = "$(LinkFlags) gdi32.lib user32.lib kernel32.lib shell32.lib"
+LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
+
 [Configs.Paranoid.Linux64]
 OtherLinkFlags = "$(LinkFlags) -lglfw"
+
+[Configs.Test.Win64]
+OtherLinkFlags = "$(LinkFlags) gdi32.lib user32.lib kernel32.lib shell32.lib"
+LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
 
 [Configs.Test.Linux64]
 OtherLinkFlags = "$(LinkFlags) -lglfw"
