@@ -1,7 +1,8 @@
 using System;
 
-namespace glfw_beef {
+namespace GLFW {
 	[CRepr]
+	/// Opaque monitor object.
 	struct GlfwMonitor {
 		public enum Event {
 			Connected = 0x00040001,

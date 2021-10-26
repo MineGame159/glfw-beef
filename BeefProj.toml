@@ -1,38 +1,34 @@
 FileVersion = 1
 
 [Project]
-Name = "glfw-beef"
+Name = "GLFW"
 TargetType = "BeefLib"
-StartupObject = "glfw-beef.Program"
-
-[Configs.Debug.Win32]
-LibPaths = ["$(ProjectDir)/dist/x86/glfw3dll.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+StartupObject = "GLFW.Program"
 
 [Configs.Debug.Win64]
-LibPaths = ["$(ProjectDir)/dist/x64/glfw3dll.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
-
-[Configs.Release.Win32]
-LibPaths = ["$(ProjectDir)/dist/x86/glfw3dll.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+OtherLinkFlags = "$(LinkFlags) gdi32.lib shell32.lib"
+LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
 
 [Configs.Release.Win64]
-LibPaths = ["$(ProjectDir)/dist/x64/glfw3dll.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
-
-[Configs.Paranoid.Win32]
-LibPaths = ["$(ProjectDir)/dist/x86/glfw3dll.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+OtherLinkFlags = "$(LinkFlags) gdi32.lib shell32.lib"
+LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
 
 [Configs.Paranoid.Win64]
-LibPaths = ["$(ProjectDir)/dist/x64/glfw3dll.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
-
-[Configs.Test.Win32]
-LibPaths = ["$(ProjectDir)/dist/x86/glfw3dll.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+OtherLinkFlags = "$(LinkFlags) gdi32.lib shell32.lib"
+LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
 
 [Configs.Test.Win64]
-LibPaths = ["$(ProjectDir)/dist/x64/glfw3dll.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+OtherLinkFlags = "$(LinkFlags) gdi32.lib shell32.lib"
+LibPaths = ["$(ProjectDir)/dist/windows/glfw3_mt.lib"]
+
+[Configs.Debug.Linux64]
+OtherLinkFlags = "$(LinkFlags) -lglfw"
+
+[Configs.Release.Linux64]
+OtherLinkFlags = "$(LinkFlags) -lglfw"
+
+[Configs.Paranoid.Linux64]
+OtherLinkFlags = "$(LinkFlags) -lglfw"
+
+[Configs.Test.Linux64]
+OtherLinkFlags = "$(LinkFlags) -lglfw"

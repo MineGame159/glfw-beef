@@ -1,9 +1,11 @@
 using System;
+using System.Interop;
 
-namespace glfw_beef {
+namespace GLFW {
 	[CRepr]
+	/// Image data.
 	class GlfwImage {
-		public int32 width, height;
-		public char8* pixels;
+		public c_int width, height;
+		public c_char* pixels;
 	}
 }

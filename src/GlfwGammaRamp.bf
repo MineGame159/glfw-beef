@@ -1,9 +1,11 @@
 using System;
+using System.Interop;
 
-namespace glfw_beef {
+namespace GLFW {
 	[CRepr]
+	/// Gamma ramp.
 	struct GlfwGammaRamp {
-		public uint16* red, green, blue;
-		public uint32 size;
+		public c_ushort* red, green, blue;
+		public c_uint size;
 	}
 }

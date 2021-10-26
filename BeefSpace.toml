@@ -1,2 +1,5 @@
 FileVersion = 1
-Projects = {glfw-beef = {Path = "."}}
+Projects = {GLFW = {Path = "."}, Example = {Path = "example"}}
+
+[Workspace]
+StartupProject = "Example"

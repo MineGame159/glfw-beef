@@ -1,7 +1,8 @@
 using System;
+using System.Interop;
 
-namespace glfw_beef {
-	class GlfwInput {
+namespace GLFW {
+	static class GlfwInput {
 		[AllowDuplicates]
 		public enum MouseButton {
 			Button1,
@@ -251,7 +252,7 @@ namespace glfw_beef {
 			Disabled = 0x00034003
 		}
 
-		public enum Action {
+		public enum Action : c_uchar {
 			Press = 1,
 			Release = 0,
 			Repeat = 2

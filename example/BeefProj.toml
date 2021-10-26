@@ -1,0 +1,6 @@
+FileVersion = 1
+Dependencies = {corlib = "*", GLFW = "*"}
+
+[Project]
+Name = "Example"
+StartupObject = "Example.Program"

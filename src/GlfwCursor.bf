@@ -1,7 +1,7 @@
 using System;
 
-namespace glfw_beef {
+namespace GLFW {
 	[CRepr]
-	struct GlfwCursor {
-	}
+	/// Opaque cursor object.
+	struct GlfwCursor {}
 }
