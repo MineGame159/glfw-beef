@@ -45,11 +45,11 @@ namespace GLFW {
 			ContextCreationApi = 0x0002200B,
 			ContextVersionMajor = 0x00022002,
 			ContextVersionMinor = 0x00022003,
-			OpenglForwardCompat = 0x00022006,
-			OpenglDebugContext = 0x00022007,
-			OpenglProfile = 0x00022008,
+			OpenGlForwardCompat = 0x00022006,
+			OpenGlDebugContext = 0x00022007,
+			OpenGlProfile = 0x00022008,
 			ContextRobustness = 0x00022005,
-			ContextReleaseBehaviour = 0x00022009,
+			ContextReleaseBehavior = 0x00022009,
 			ContextNoError = 0x0002200A,
 
 			// MacOS specific
@@ -82,10 +82,10 @@ namespace GLFW {
 			ContextVersionMajor = 0x00022002,
 			ContextVersionMinor = 0x00022003,
 			ContextRevision = 0x00022004,
-			OpenglForwardCompat = 0x00022006,
-			OpenglDebugContext = 0x00022007,
-			OpenglProfile = 0x00022008,
-			ContextReleaseBehaviour = 0x00022009,
+			OpenGlForwardCompat = 0x00022006,
+			OpenGlDebugContext = 0x00022007,
+			OpenGlProfile = 0x00022008,
+			ContextReleaseBehavior = 0x00022009,
 			ContextNoError = 0x0002200A,
 			ContextRobustness = 0x00022005
 		}
