@@ -210,17 +210,17 @@ namespace GLFW {
 		public static extern void* GetWindowUserPointer(GlfwWindow* window);
 
 		[CLink]
-		private static extern RawWindowPosCallback glfwSetWindowPosCallback(RawWindowPosCallback callback);
+		private static extern RawWindowPosCallback glfwSetWindowPosCallback(GlfwWindow* window, RawWindowPosCallback callback);
 		/// Sets the position callback for the specified window.
-		public static WindowPosCallback SetWindowPosCallback(WindowPosCallback callback, bool deletePrevCallback = true) {
+		public static WindowPosCallback SetWindowPosCallback(GlfwWindow* window, WindowPosCallback callback, bool deletePrevCallback = true) {
 			WindowPosCallback prevCallback = windowPosCallback;
 
 			if (windowPosCallback != null && deletePrevCallback) delete windowPosCallback;
 			windowPosCallback = callback;
 
-			if (callback != null) glfwSetWindowPosCallback((window, x, y) => windowPosCallback(window, x, y));
+			if (callback != null) glfwSetWindowPosCallback(window, (window, x, y) => windowPosCallback(window, x, y));
 			else {
-				glfwSetWindowPosCallback((window, x, y) => {});
+				glfwSetWindowPosCallback(window, (window, x, y) => {});
 				windowPosCallback = null;
 			}
 
@@ -264,17 +264,17 @@ namespace GLFW {
 		}
 
 		[CLink]
-		private static extern RawWindowRefreshCallback glfwSetWindowRefreshCallback(RawWindowRefreshCallback callback);
+		private static extern RawWindowRefreshCallback glfwSetWindowRefreshCallback(GlfwWindow* window, RawWindowRefreshCallback callback);
 		/// Sets the refresh callback for the specified window.
-		public static WindowRefreshCallback SetWindowRefreshCallback(WindowRefreshCallback callback, bool deletePrevCallback = true) {
+		public static WindowRefreshCallback SetWindowRefreshCallback(GlfwWindow* window, WindowRefreshCallback callback, bool deletePrevCallback = true) {
 			WindowRefreshCallback prevCallback = windowRefreshCallback;
 
 			if (windowRefreshCallback != null && deletePrevCallback) delete windowRefreshCallback;
 			windowRefreshCallback = callback;
 
-			if (callback != null) glfwSetWindowRefreshCallback((window) => windowRefreshCallback(window));
+			if (callback != null) glfwSetWindowRefreshCallback(window, (window) => windowRefreshCallback(window));
 			else {
-				glfwSetWindowRefreshCallback((window) => {});
+				glfwSetWindowRefreshCallback(window, (window) => {});
 				windowRefreshCallback = null;
 			}
 
@@ -282,17 +282,17 @@ namespace GLFW {
 		}
 
 		[CLink]
-		private static extern RawWindowFocusCallback glfwSetWindowFocusCallback(RawWindowFocusCallback callback);
+		private static extern RawWindowFocusCallback glfwSetWindowFocusCallback(GlfwWindow* window, RawWindowFocusCallback callback);
 		/// Sets the focus callback for the specified window.
-		public static WindowFocusCallback SetWindowFocusCallback(WindowFocusCallback callback, bool deletePrevCallback = true) {
+		public static WindowFocusCallback SetWindowFocusCallback(GlfwWindow* window, WindowFocusCallback callback, bool deletePrevCallback = true) {
 			WindowFocusCallback prevCallback = windowFocusCallback;
 
 			if (windowFocusCallback != null && deletePrevCallback) delete windowFocusCallback;
 			windowFocusCallback = callback;
 
-			if (callback != null) glfwSetWindowFocusCallback((window, focus) => windowFocusCallback(window, focus == TRUE));
+			if (callback != null) glfwSetWindowFocusCallback(window, (window, focus) => windowFocusCallback(window, focus == TRUE));
 			else {
-				glfwSetWindowFocusCallback((window, focus) => {});
+				glfwSetWindowFocusCallback(window, (window, focus) => {});
 				windowFocusCallback = null;
 			}
 
@@ -300,17 +300,17 @@ namespace GLFW {
 		}
 
 		[CLink]
-		private static extern RawWindowIconifyCallback glfwSetWindowIconifyCallback(RawWindowIconifyCallback callback);
+		private static extern RawWindowIconifyCallback glfwSetWindowIconifyCallback(GlfwWindow* window, RawWindowIconifyCallback callback);
 		/// Sets the iconify callback for the specified window.
-		public static WindowIconifyCallback SetWindowIconifyCallback(WindowIconifyCallback callback, bool deletePrevCallback = true) {
+		public static WindowIconifyCallback SetWindowIconifyCallback(GlfwWindow* window, WindowIconifyCallback callback, bool deletePrevCallback = true) {
 			WindowIconifyCallback prevCallback = windowIconifyCallback;
 
 			if (windowIconifyCallback != null && deletePrevCallback) delete windowIconifyCallback;
 			windowIconifyCallback = callback;
 
-			if (callback != null) glfwSetWindowIconifyCallback((window, iconify) => windowIconifyCallback(window, iconify == TRUE));
+			if (callback != null) glfwSetWindowIconifyCallback(window, (window, iconify) => windowIconifyCallback(window, iconify == TRUE));
 			else {
-				glfwSetWindowIconifyCallback((window, iconify) => {});
+				glfwSetWindowIconifyCallback(window, (window, iconify) => {});
 				windowIconifyCallback = null;
 			}
 
@@ -318,17 +318,17 @@ namespace GLFW {
 		}
 
 		[CLink]
-		private static extern RawWindowMaximizeCallback glfwSetWindowMaximizeCallback(RawWindowMaximizeCallback callback);
+		private static extern RawWindowMaximizeCallback glfwSetWindowMaximizeCallback(GlfwWindow* window, RawWindowMaximizeCallback callback);
 		/// Sets the maximize callback for the specified window.
-		public static WindowMaximizeCallback SetWindowMaximizeCallback(WindowMaximizeCallback callback, bool deletePrevCallback = true) {
+		public static WindowMaximizeCallback SetWindowMaximizeCallback(GlfwWindow* window, WindowMaximizeCallback callback, bool deletePrevCallback = true) {
 			WindowMaximizeCallback prevCallback = windowMaximizeCallback;
 
 			if (windowMaximizeCallback != null && deletePrevCallback) delete windowMaximizeCallback;
 			windowMaximizeCallback = callback;
 
-			if (callback != null) glfwSetWindowMaximizeCallback((window, maximize) => windowMaximizeCallback(window, maximize == TRUE));
+			if (callback != null) glfwSetWindowMaximizeCallback(window, (window, maximize) => windowMaximizeCallback(window, maximize == TRUE));
 			else {
-				glfwSetWindowMaximizeCallback((window, maximize) => {});
+				glfwSetWindowMaximizeCallback(window, (window, maximize) => {});
 				windowMaximizeCallback = null;
 			}
 
@@ -354,17 +354,17 @@ namespace GLFW {
 		}
 
 		[CLink]
-		private static extern RawWindowContentsScaleCallback glfwSetWindowContentScaleCallback(RawWindowContentsScaleCallback callback);
+		private static extern RawWindowContentsScaleCallback glfwSetWindowContentScaleCallback(GlfwWindow* window, RawWindowContentsScaleCallback callback);
 		/// Sets the window content scale callback for the specified window.
-		public static WindowContentsScaleCallback SetWindowContentScaleCallback(WindowContentsScaleCallback callback, bool deletePrevCallback = true) {
+		public static WindowContentsScaleCallback SetWindowContentScaleCallback(GlfwWindow* window, WindowContentsScaleCallback callback, bool deletePrevCallback = true) {
 			WindowContentsScaleCallback prevCallback = windowContentsScaleCallback;
 
 			if (windowContentsScaleCallback != null && deletePrevCallback) delete windowContentsScaleCallback;
 			windowContentsScaleCallback = callback;
 
-			if (callback != null) glfwSetWindowContentScaleCallback((window, xScale, yScale) => windowContentsScaleCallback(window, xScale, yScale));
+			if (callback != null) glfwSetWindowContentScaleCallback(window, (window, xScale, yScale) => windowContentsScaleCallback(window, xScale, yScale));
 			else {
-				glfwSetWindowContentScaleCallback((window, xScale, yScale) => {});
+				glfwSetWindowContentScaleCallback(window, (window, xScale, yScale) => {});
 				windowContentsScaleCallback = null;
 			}
 
