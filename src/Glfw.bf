@@ -5,9 +5,9 @@ namespace GLFW {
 	static class Glfw {
 		// Constants
 
-		private const c_int DONT_CARE = -1;
-		private const c_int TRUE = 1;
-		private const c_int FALSE = 0;
+		public const c_int DONT_CARE = -1;
+		public const c_int TRUE = 1;
+		public const c_int FALSE = 0;
 
 		// Enums
 
