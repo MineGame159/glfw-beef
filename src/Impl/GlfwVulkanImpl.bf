@@ -4,6 +4,9 @@ using System.Collections;
 
 namespace GLFW {
 	extension Glfw {
+		[CRepr]
+		public struct VkHandle : this(int handle) {}
+
 		[CLink]
 		private static extern c_int glfwVulkanSupported();
 		/// Returns whether the Vulkan loader and an ICD have been found.
@@ -30,6 +33,6 @@ namespace GLFW {
 
 		[LinkName("glfwCreateWindowSurface")]
 		/// Creates a Vulkan surface for the specified window.
-		public static extern void* CreateWindowSurface(void* instance, GlfwWindow* window, void* allocator, void* surface);
+		public static extern int32 CreateWindowSurface(VkHandle instance, GlfwWindow* window, void* allocator, void* surface);
 	}
 }
