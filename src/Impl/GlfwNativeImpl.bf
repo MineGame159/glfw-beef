@@ -19,7 +19,7 @@ namespace GLFW {
 
 		[LinkName("glfwGetWin32Window")]
 		/// Returns the HWND of the specified window.
-		public static extern Windows.HWnd GetWin32Window(GlfwWindow* window);
+		public static extern Windows.HWnd* GetWin32Window(GlfwWindow* window);
 
 		[LinkName("glfwGetWGLContext")]
 		/// Returns the HGLRC of the specified window.
