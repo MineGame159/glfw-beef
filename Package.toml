@@ -1,0 +1,4 @@
+[Package]
+Name = "GLFW"
+Version = "3.3.4"
+Description = "Beef wrapper library for GLFW 3.3.4"
