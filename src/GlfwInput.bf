@@ -39,7 +39,7 @@ namespace GLFW {
 			Num7,
 			Num8,
 			Num9,
-			Smicolon = 59,
+			Semicolon = 59,
 			Equal = 61,
 			A = 65,
 			B,

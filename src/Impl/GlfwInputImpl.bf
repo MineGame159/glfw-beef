@@ -74,7 +74,7 @@ namespace GLFW {
 		/// Returns the layout-specific name of the specified printable key.
 		public static void GetKeyName(GlfwInput.Key key, int scancode, String buffer) {
 			char8* chars = glfwGetKeyName((.) key, (.) scancode);
-			buffer.Append(chars);
+			if (chars != null) buffer.Append(chars);
 		}
 
 		[CLink]
